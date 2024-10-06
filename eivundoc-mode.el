@@ -42,9 +42,14 @@ Documentation-Format, or EivUnDoc."
 
 (defun lock-window ()
   "locks a buffer to a the active/selected window by calling dedicating
-said window to the currently selectedd buffer"
+said window to the currently selected buffer
+
+If the window is already dedicated, undedicates instead"
   (interactive)
-  (set-window-dedicated-p (selected-window) t))
+  (if (not (window-dedicated-p))
+      (set-window-dedicated-p (selected-window) t)
+    (ding)
+    (set-window-dedicated-p (selected-window) nil)))
 
 (provide 'eivundoc-mode)
 
