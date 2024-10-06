@@ -40,6 +40,12 @@ Documentation-Format, or EivUnDoc."
   (interactive "r" )
   (fill-region-as-paragraph beginning end "full"))
 
+(defun lock-window ()
+  "locks a buffer to a the active/selected window by calling dedicating
+said window to the currently selectedd buffer"
+  (interactive)
+  (set-window-dedicated-p (selected-window) t))
+
 (provide 'eivundoc-mode)
 
 ;;; eivundoc.el ends here
